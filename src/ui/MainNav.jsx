@@ -1,3 +1,5 @@
+import { House, CalendarSearch, Warehouse, User, Settings } from "lucide-react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const NavList = styled.ul`
@@ -6,7 +8,7 @@ const NavList = styled.ul`
   gap: 0.8rem;
 `;
 
-const Link = styled.a`
+const StyledNavLink = styled(NavLink)`
   &:link,
   &:visited {
     display: flex;
@@ -20,7 +22,6 @@ const Link = styled.a`
     transition: all 0.3s;
   }
 
-  /* This works because react-router places the active class on the active NavLink */
   &:hover,
   &:active,
   &.active:link,
@@ -35,6 +36,7 @@ const Link = styled.a`
     height: 2.4rem;
     color: var(--color-grey-400);
     transition: all 0.3s;
+    flex-shrink: 0;
   }
 
   &:hover svg,
@@ -44,3 +46,44 @@ const Link = styled.a`
     color: var(--color-brand-600);
   }
 `;
+
+const MainNav = () => {
+  return (
+    <div>
+      <NavList>
+        <li>
+          <StyledNavLink to="dashboard">
+            <House />
+            <span>Home</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="bookings">
+            <CalendarSearch />
+            <span>Bookings</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="cabins">
+            <Warehouse />
+            <span>Cabins</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="users">
+            <User />
+            <span>Users</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="settings">
+            <Settings />
+            <span>Settings</span>
+          </StyledNavLink>
+        </li>
+      </NavList>
+    </div>
+  );
+};
+
+export default MainNav;
