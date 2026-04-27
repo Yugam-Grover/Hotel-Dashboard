@@ -3,7 +3,7 @@ import CabinRow from "./CabinRow";
 import { useQuery } from "@tanstack/react-query";
 import { GetCabins } from "../../services/cabins.js";
 import Spinner from "../../ui/Spinner";
-import useCabins from "./useCabins.jsx";
+import useCabins from "./useCabins.js";
 
 const Table = styled.div`
   border: 1px solid var(--color-grey-200);
