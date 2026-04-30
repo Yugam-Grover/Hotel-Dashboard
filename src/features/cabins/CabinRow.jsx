@@ -1,23 +1,13 @@
-import { CopyPlus, PencilLine, Trash } from "lucide-react";
-import styled from "styled-components";
-import { useState } from "react";
-
 import { formatCurrency } from "../../utils/helpers";
-
 import CreateCabinForm from "./CreateCabinForm";
 import useCabinOperations from "./useCabinOperations";
+import Modal from "../../ui/Modal";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
-const TableRow = styled.div`
-  display: grid;
-  grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
-  column-gap: 2.4rem;
-  align-items: center;
-  padding: 1.4rem 2.4rem;
-
-  &:not(:last-child) {
-    border-bottom: 1px solid var(--color-grey-100);
-  }
-`;
+import { CopyPlus, PencilLine, Trash } from "lucide-react";
+import styled from "styled-components";
+import Table from "../../ui/Table";
+import Menus from "../../ui/Menus";
 
 const Img = styled.img`
   display: block;
@@ -46,7 +36,6 @@ const Discount = styled.div`
   color: var(--color-green-700);
 `;
 const CabinRow = ({ cabinData }) => {
-  const [showEditForm, setShowEditForm] = useState(false);
   const { isPending: isDeleting, mutate: deleteCabin } =
     useCabinOperations("delete");
   const { isPending: isDuplicating, mutate: duplicateCabin } =
@@ -73,7 +62,7 @@ const CabinRow = ({ cabinData }) => {
   }
   return (
     <>
-      <TableRow>
+      <Table.Row>
         <Img src={image} />
         <Cabin>{name}</Cabin>
         <Cabin>Fits upto {maxCapacity} guests.</Cabin>
@@ -81,19 +70,37 @@ const CabinRow = ({ cabinData }) => {
         <Discount>
           {discount ? formatCurrency(discount) : <span>&mdash;</span>}
         </Discount>
-        <div>
-          <button disabled={isDuplicating} onClick={handleDuplicate}>
-            <CopyPlus />
-          </button>
-          <button onClick={() => setShowEditForm((show) => !show)}>
-            <PencilLine />
-          </button>
-          <button onClick={() => deleteCabin(cabinId)} disabled={isDeleting}>
-            <Trash />
-          </button>
-        </div>
-      </TableRow>
-      {showEditForm && <CreateCabinForm cabinToEdit={cabinData} />}
+        <Modal>
+          <Menus.Menu>
+            <Menus.Toggle id={cabinId} />
+
+            <Menus.List id={cabinId}>
+              <Menus.Button onClick={handleDuplicate} icon={<CopyPlus />}>
+                Duplicate
+              </Menus.Button>
+
+              <Modal.Open opens="edit">
+                <Menus.Button icon={<PencilLine />}>Edit</Menus.Button>
+              </Modal.Open>
+              <Modal.Open opens="delete">
+                <Menus.Button icon={<Trash />}>Delete</Menus.Button>
+              </Modal.Open>
+            </Menus.List>
+
+            <Modal.Window name="edit">
+              <CreateCabinForm cabinToEdit={cabinData} />
+            </Modal.Window>
+
+            <Modal.Window name="delete">
+              <ConfirmDelete
+                resourceName={"cabin"}
+                onConfirm={() => deleteCabin(cabinId)}
+                disabled={isDeleting}
+              />
+            </Modal.Window>
+          </Menus.Menu>
+        </Modal>
+      </Table.Row>
     </>
   );
 };
