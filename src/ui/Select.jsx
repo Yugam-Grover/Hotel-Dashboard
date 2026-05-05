@@ -13,3 +13,19 @@ const StyledSelect = styled.select`
   font-weight: 500;
   box-shadow: var(--shadow-sm);
 `;
+import React from "react";
+import { useSearchParams } from "react-router-dom";
+
+const Select = ({ field, options, ...props }) => {
+  return (
+    <StyledSelect value={field} {...props}>
+      {options.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </StyledSelect>
+  );
+};
+
+export default Select;
