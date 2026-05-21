@@ -1,0 +1,50 @@
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getBookings } from "../../services/apiBookings";
+import { useSearchParams } from "react-router-dom";
+import { PAGE_SIZE } from "../../utils/constants";
+
+const useBookings = () => {
+  const queryClient = useQueryClient();
+  const [searchParams] = useSearchParams();
+  const filterValue = searchParams.get("status");
+  const filter =
+    !filterValue || filterValue === "all"
+      ? null
+      : { field: "status", value: filterValue };
+  // : { field: "totalPrice", value: 5000, method: 'gte' };
+  // 3rd case, multiple filters together like checked out + gte 5000, use array of objects then loop the queries
+  const sortByRaw = searchParams.get("sortBy") || "startDate-desc";
+  const [field, direction] = sortByRaw.split("-");
+  const sortBy = { field, direction };
+
+  const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
+
+  const {
+    data: { data: bookings, count } = {},
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["bookings", filter, sortBy, page],
+    queryFn: () => getBookings({ filter, sortBy, page }),
+  });
+
+  const pageCount = Math.ceil(count / PAGE_SIZE);
+  if (page < pageCount) {
+    queryClient.prefetchQuery({
+      queryKey: ["bookings", filter, sortBy, page + 1],
+      queryFn: () => getBookings({ filter, sortBy, page: page + 1 }),
+    });
+  }
+  if (page > 1) {
+    queryClient.prefetchQuery({
+      queryKey: ["bookings", filter, sortBy, page + 1],
+      queryFn: () => getBookings({ filter, sortBy, page: page - 1 }),
+    });
+  }
+  if (error)
+    throw new Error("Bookings data could not be fetched through React-Query.");
+
+  return { bookings, isLoading, count };
+};
+
+export default useBookings;

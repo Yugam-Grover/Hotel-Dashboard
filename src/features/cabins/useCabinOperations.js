@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { CreateEditCabin, DeleteCabin } from "../../services/cabins";
+import { CreateEditCabin, DeleteCabin } from "../../services/apiCabins";
 import { toast } from "react-toastify";
 
 export default function useCabinOperations(operation) {

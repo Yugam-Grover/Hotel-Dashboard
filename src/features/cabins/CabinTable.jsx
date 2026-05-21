@@ -1,5 +1,4 @@
 import CabinRow from "./CabinRow";
-import { GetCabins } from "../../services/cabins.js";
 import Spinner from "../../ui/Spinner";
 import Table from "../../ui/Table.jsx";
 import useCabins from "./useCabins.js";
