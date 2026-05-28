@@ -1,6 +1,8 @@
 import supabase from "./supabase";
 
 export async function getSettings() {
+  const { data: session } = await supabase.auth.getSession();
+  if (!session.session) return null;
   const { data, error } = await supabase.from("settings").select().single();
   if (error) throw new Error("Failed to fetch from server");
 

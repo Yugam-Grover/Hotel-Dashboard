@@ -17,6 +17,7 @@ import Modal from "../../ui/Modal";
 import useDeleteBooking from "./useDeleteBooking";
 import { useNavigate } from "react-router-dom";
 import ConfirmDelete from "../../ui/ConfirmDelete";
+import Empty from "../../ui/Empty";
 
 const HeadingGroup = styled.div`
   display: flex;
@@ -36,6 +37,8 @@ function BookingDetail() {
     "checked-out": "silver",
   };
   if (isLoading) return <Spinner />;
+  if (!booking) return <Empty resourceName="booking" />;
+
   const { status, bookingNumber, id: bookingId } = booking;
   return (
     <>

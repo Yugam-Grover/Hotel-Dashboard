@@ -14,9 +14,6 @@ const useBooking = () => {
     queryFn: () => getBooking(bookingId),
     retry: false,
   });
-  if (error)
-    throw new Error("Booking could not be fetched through React-Query.");
-
   return { booking, isLoading };
 };
 
