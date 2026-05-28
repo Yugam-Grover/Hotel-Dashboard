@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 
 import DataItem from "../../ui/DataItem";
-import { Flag } from "../../ui/Flag";
+import Flag from "../../ui/Flag";
 
 import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
 
