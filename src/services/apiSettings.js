@@ -8,9 +8,13 @@ export async function getSettings() {
 
   return data;
 }
-const settingsData = await getSettings();
 
 export async function updateSetting(setting) {
+  const { data: settingsData, error: fetchError } = await supabase
+    .from("settings")
+    .select("id")
+    .single();
+  if (fetchError) throw new Error("Failed to resolve settings row ID");
   const { data, error } = await supabase
     .from("settings")
     .update(setting)
