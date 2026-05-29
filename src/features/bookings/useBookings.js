@@ -11,8 +11,7 @@ const useBookings = () => {
     !filterValue || filterValue === "all"
       ? null
       : { field: "status", value: filterValue };
-  // : { field: "totalPrice", value: 5000, method: 'gte' };
-  // 3rd case, multiple filters together like checked out + gte 5000, use array of objects then loop the queries
+
   const sortByRaw = searchParams.get("sortBy") || "startDate-desc";
   const [field, direction] = sortByRaw.split("-");
   const sortBy = { field, direction };

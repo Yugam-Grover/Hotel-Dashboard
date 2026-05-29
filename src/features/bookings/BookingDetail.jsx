@@ -10,7 +10,6 @@ import ButtonText from "../../ui/ButtonText";
 import Spinner from "../../ui/Spinner";
 import { useMoveBack } from "../../hooks/useMoveBack";
 import useBooking from "./useBooking";
-import Menus from "../../ui/Menus";
 import useCheckout from "./useCheckout";
 import { LogOut } from "lucide-react";
 import Modal from "../../ui/Modal";

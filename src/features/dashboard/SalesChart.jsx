@@ -11,13 +11,12 @@ import styled from "styled-components";
 import DashboardBox from "./DashboardBox";
 import Heading from "../../ui/Heading";
 import { eachDayOfInterval } from "date-fns/fp";
-import { format, isSameDay, subDays } from "date-fns";
+import { format, subDays } from "date-fns";
 import { useDarkMode } from "../../context/DarkModeToggle";
 
 const StyledSalesChart = styled(DashboardBox)`
   grid-column: 1 / -1;
 
-  /* Hack to change grid line colors */
   & .recharts-cartesian-grid-horizontal line,
   & .recharts-cartesian-grid-vertical line {
     stroke: var(--color-grey-300);
@@ -51,7 +50,6 @@ function SalesChart({ bookings, numDays }) {
       const startDate = booking.startDate?.split("T")[0];
       return dateStr === startDate;
     });
-    // console.log(`Date: ${dateStr}, Bookings Count: ${filteredBookings.length}`);
     return {
       label: format(date, "MMM dd"),
       totalSales: filteredBookings.reduce(

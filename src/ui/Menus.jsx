@@ -1,5 +1,5 @@
 import { EllipsisVertical } from "lucide-react";
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 
 import styled from "styled-components";

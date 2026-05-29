@@ -4,12 +4,9 @@ import Heading from "../../ui/Heading";
 import Row from "../../ui/Row";
 import useTodayBookings from "./useTodayBookings";
 import TodayItem from "./TodayItem";
-import Flag from "../../ui/Flag";
 import Spinner from "../../ui/Spinner";
-import { getToday } from "../../utils/helpers";
 
 const StyledToday = styled.div`
-  /* Box */
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
@@ -26,7 +23,6 @@ const TodayList = styled.ul`
   overflow: scroll;
   overflow-x: hidden;
 
-  /* Removing scrollbars for webkit, firefox, and ms, respectively */
   &::-webkit-scrollbar {
     width: 0 !important;
   }

@@ -11,7 +11,7 @@ export default function useUpdateSetting() {
       toast.success("Setting updated successfully.");
       queryClient.invalidateQueries("settings");
     },
-    onError: (err) => toast.error("An error occurred during the operation."),
+    onError: () => toast.error("An error occurred during the operation."),
   });
   return { updateSetting, isUpdating };
 }

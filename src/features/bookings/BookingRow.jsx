@@ -44,11 +44,9 @@ const Amount = styled.div`
 function BookingRow({
   booking: {
     id: bookingId,
-    created_at,
     startDate,
     endDate,
     numNights,
-    numGuests,
     totalPrice,
     status,
     guests: { name: guestName, email },
@@ -111,7 +109,8 @@ function BookingRow({
                 icon={<LogOut />}
                 onClick={() => {
                   checkout(bookingId);
-                }}>
+                }}
+                disabled={isCheckingOut}>
                 Check Out
               </Menus.Button>
             )}

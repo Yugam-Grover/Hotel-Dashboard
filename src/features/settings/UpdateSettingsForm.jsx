@@ -1,6 +1,7 @@
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
+import Spinner from "../../ui/Spinner";
 
 import useSettings from "./useSettings";
 import useUpdateSetting from "./useUpdateSetting";
@@ -21,6 +22,7 @@ function UpdateSettingsForm() {
     const { value } = e.target;
     updateSetting({ [field]: value });
   }
+  if (isLoading) return <Spinner />;
   return (
     <Form>
       <FormRow label="Minimum nights/booking:">

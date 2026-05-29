@@ -21,8 +21,6 @@ const Avatar = styled.img`
   outline: 2px solid var(--color-grey-100);
 `;
 
-import React from "react";
-
 const UserAvatar = () => {
   const { user } = useUser();
   const { fullName, avatar } = user.user_metadata;

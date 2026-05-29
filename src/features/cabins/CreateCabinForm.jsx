@@ -10,9 +10,6 @@ import FormRow from "../../ui/FormRow";
 import useCabinOperations from "./useCabinOperations";
 
 function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
-  // console.log(cabinToEdit);
-  // console.log(cabinToEdit.id);
-
   const { mutate: createCabin, isPending: isCreating } = useCabinOperations();
   const { mutate: updateCabin, isPending: isUpdating } =
     useCabinOperations("edit");
@@ -26,7 +23,6 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
   const { errors } = formState;
 
   const onSubmit = (data) => {
-    // console.log(data);
     const isImageString = typeof data.image === "string";
     const image = isImageString
       ? data.image
@@ -53,7 +49,6 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
           },
         },
       );
-    // console.log(data.image[0]);
   };
   return (
     <Form
@@ -138,7 +133,6 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
       </FormRow>
 
       <FormRow>
-        {/* type is an HTML attribute! */}
         <Button
           variation="secondary"
           type="reset"

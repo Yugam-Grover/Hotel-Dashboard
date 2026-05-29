@@ -2,7 +2,6 @@ import CabinRow from "./CabinRow";
 import Spinner from "../../ui/Spinner";
 import Table from "../../ui/Table.jsx";
 import useCabins from "./useCabins.js";
-import styled from "styled-components";
 import Menus from "../../ui/Menus.jsx";
 import { useSearchParams } from "react-router-dom";
 

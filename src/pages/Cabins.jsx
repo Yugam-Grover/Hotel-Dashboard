@@ -2,7 +2,6 @@ import Heading from "../ui/Heading";
 import Row from "../ui/Row";
 import CabinTable from "../features/cabins/CabinTable";
 import AddCabins from "../features/cabins/AddCabins";
-import Filter from "../ui/Filter";
 import CabinTableOperations from "../features/cabins/CabinTableOperations";
 function Cabins() {
   return (

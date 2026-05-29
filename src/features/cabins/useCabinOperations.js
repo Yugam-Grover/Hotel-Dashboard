@@ -27,7 +27,7 @@ export default function useCabinOperations(operation) {
       );
       queryClient.invalidateQueries("cabins");
     },
-    onError: (err) => toast.error("An error occurred during the operation."),
+    onError: () => toast.error("An error occurred during the operation."),
   });
   return { mutate, isPending };
 }

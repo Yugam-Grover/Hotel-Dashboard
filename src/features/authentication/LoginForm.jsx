@@ -4,15 +4,12 @@ import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import SpinnerMini from "../../ui/SpinnerMini";
 import FormRowVertical from "../../ui/FormRowVertical";
-import LoginAuth from "../../services/apiAuth";
-import { useNavigate } from "react-router-dom";
 import useLogin from "./useLogin";
 
 function LoginForm() {
   const { login, isPending } = useLogin();
   const [email, setEmail] = useState("yugam@test.com");
   const [password, setPassword] = useState("12345678");
-  const navigate = useNavigate();
   function handleSubmit(e) {
     e.preventDefault();
     if (!email || !password) return;
@@ -33,7 +30,6 @@ function LoginForm() {
         <Input
           type="email"
           id="email"
-          // This makes this form better for password managers
           autoComplete="username"
           value={email}
           onChange={(e) => setEmail(e.target.value)}

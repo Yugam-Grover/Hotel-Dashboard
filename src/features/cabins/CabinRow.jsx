@@ -75,7 +75,10 @@ const CabinRow = ({ cabinData }) => {
             <Menus.Toggle id={cabinId} />
 
             <Menus.List id={cabinId}>
-              <Menus.Button onClick={handleDuplicate} icon={<CopyPlus />}>
+              <Menus.Button
+                onClick={handleDuplicate}
+                disabled={isDuplicating}
+                icon={<CopyPlus />}>
                 Duplicate
               </Menus.Button>
 

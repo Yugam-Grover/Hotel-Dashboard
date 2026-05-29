@@ -10,7 +10,6 @@ export async function GetCabins() {
 }
 
 export async function CreateEditCabin(newCabin, editId) {
-  //image path
   const hasImagePath = newCabin.image?.startsWith?.(
     import.meta.env.VITE_SUPABASE_URL,
   );

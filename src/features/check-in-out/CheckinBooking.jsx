@@ -16,10 +16,8 @@ import useSettings from "../settings/useSettings";
 
 import { formatCurrency } from "../../utils/helpers";
 import BookingDataBox from "../../features/bookings/BookingDataBox";
-import { format } from "date-fns";
 
 const Box = styled.div`
-  /* Box */
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
