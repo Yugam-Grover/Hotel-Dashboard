@@ -1,22 +1,25 @@
-import GlobalStyles from "./styles/GlobalStyles";
-import { BrowserRouter, Routes, Navigate, Route } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-import Bookings from "./pages/Bookings";
-import Cabins from "./pages/Cabins";
-import Users from "./pages/Users";
-import Settings from "./pages/Settings";
-import Account from "./pages/Account";
-import Login from "./pages/Login";
-import PageNotFound from "./pages/PageNotFound";
-import AppLayout from "./ui/AppLayout";
+import { lazy } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Booking from "./pages/Booking";
-import Checkin from "./pages/Checkin";
+import { BrowserRouter, Routes, Navigate, Route } from "react-router-dom";
+
+import AppLayout from "./ui/AppLayout";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import DarkModeProvider from "./context/DarkModeToggle";
+import GlobalStyles from "./styles/GlobalStyles";
+
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Bookings = lazy(() => import("./pages/Bookings"));
+const Cabins = lazy(() => import("./pages/Cabins"));
+const Users = lazy(() => import("./pages/Users"));
+const Settings = lazy(() => import("./pages/Settings"));
+const Account = lazy(() => import("./pages/Account"));
+const Login = lazy(() => import("./pages/Login"));
+const Booking = lazy(() => import("./pages/Booking"));
+const Checkin = lazy(() => import("./pages/Checkin"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound"));
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -29,7 +32,6 @@ const App = () => {
   return (
     <DarkModeProvider>
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
         <GlobalStyles />
         <BrowserRouter>
           <Routes>

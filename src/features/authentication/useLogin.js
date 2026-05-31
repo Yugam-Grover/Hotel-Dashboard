@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 export default function useLogin() {
   const navigate = useNavigate();
-  const { mutate: login, isPending } = useMutation({
+  const { mutate: login, isLoading } = useMutation({
     mutationFn: ({ email, password }) => LoginAuth({ email, password }),
     onSuccess: () => {
       navigate("/dashboard", { replace: true });
@@ -14,5 +14,5 @@ export default function useLogin() {
       toast.error("Entered email or password is incorrect!");
     },
   });
-  return { login, isPending };
+  return { login, isLoading };
 }

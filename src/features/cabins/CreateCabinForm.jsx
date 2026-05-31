@@ -10,8 +10,8 @@ import FormRow from "../../ui/FormRow";
 import useCabinOperations from "./useCabinOperations";
 
 function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
-  const { mutate: createCabin, isPending: isCreating } = useCabinOperations();
-  const { mutate: updateCabin, isPending: isUpdating } =
+  const { mutate: createCabin, isLoading: isCreating } = useCabinOperations();
+  const { mutate: updateCabin, isLoading: isUpdating } =
     useCabinOperations("edit");
   const isWorking = isCreating || isUpdating;
 

@@ -7,7 +7,7 @@ import FormRowVertical from "../../ui/FormRowVertical";
 import useLogin from "./useLogin";
 
 function LoginForm() {
-  const { login, isPending } = useLogin();
+  const { login, isLoading } = useLogin();
   const [email, setEmail] = useState("yugam@test.com");
   const [password, setPassword] = useState("12345678");
   function handleSubmit(e) {
@@ -33,7 +33,7 @@ function LoginForm() {
           autoComplete="username"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          disabled={isPending}
+          disabled={isLoading}
         />
       </FormRowVertical>
       <FormRowVertical label="Password">
@@ -43,12 +43,12 @@ function LoginForm() {
           autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          disabled={isPending}
+          disabled={isLoading}
         />
       </FormRowVertical>
       <FormRowVertical>
-        <Button size="large" disabled={isPending}>
-          {!isPending ? "log In" : <SpinnerMini />}
+        <Button size="large" disabled={isLoading}>
+          {!isLoading ? "log In" : <SpinnerMini />}
         </Button>
       </FormRowVertical>
     </Form>

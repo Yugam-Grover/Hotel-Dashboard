@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 export default function useCabinOperations(operation) {
   const queryClient = useQueryClient();
 
-  const { mutate, isPending } = useMutation({
+  const { mutate, isLoading } = useMutation({
     mutationFn: (data) => {
       switch (operation) {
         case "edit":
@@ -29,5 +29,5 @@ export default function useCabinOperations(operation) {
     },
     onError: () => toast.error("An error occurred during the operation."),
   });
-  return { mutate, isPending };
+  return { mutate, isLoading };
 }

@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const FullPage = styled.div`
-  height: 100vw;
-  background-color: var(--color-grey-50);
+  height: 100vh;
+  background-color: "";
   display: flex;
   align-items: center;
   justify-content: center;

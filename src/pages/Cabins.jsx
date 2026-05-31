@@ -3,6 +3,8 @@ import Row from "../ui/Row";
 import CabinTable from "../features/cabins/CabinTable";
 import AddCabins from "../features/cabins/AddCabins";
 import CabinTableOperations from "../features/cabins/CabinTableOperations";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorFallBack from "../ui/ErrorFallback";
 function Cabins() {
   return (
     <>
@@ -11,8 +13,13 @@ function Cabins() {
         <CabinTableOperations />
       </Row>
       <Row>
-        <CabinTable />
-        <AddCabins />
+        <ErrorBoundary FallbackComponent={ErrorFallBack}>
+          <CabinTable />
+        </ErrorBoundary>
+
+        <ErrorBoundary FallbackComponent={ErrorFallBack}>
+          <AddCabins />
+        </ErrorBoundary>
       </Row>
     </>
   );

@@ -36,9 +36,9 @@ const Discount = styled.div`
   color: var(--color-green-700);
 `;
 const CabinRow = ({ cabinData }) => {
-  const { isPending: isDeleting, mutate: deleteCabin } =
+  const { isLoading: isDeleting, mutate: deleteCabin } =
     useCabinOperations("delete");
-  const { isPending: isDuplicating, mutate: duplicateCabin } =
+  const { isLoading: isDuplicating, mutate: duplicateCabin } =
     useCabinOperations();
   const {
     id: cabinId,
