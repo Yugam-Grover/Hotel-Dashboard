@@ -3,8 +3,6 @@
 A full-stack hotel operations dashboard for managing bookings, cabins, check-ins, and sales analytics.
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20↗-6F2DBD?style=flat-square)](https://clavis-dashboard.vercel.app/)
-[![GitHub](https://img.shields.io/badge/GitHub-Source-181717?style=flat-square&logo=github)](https://github.com/Yugam-Grover/Hotel-Dashboard)
-
 ---
 
 ## Preview
