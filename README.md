@@ -58,7 +58,7 @@ Hit **Login** and explore the full dashboard.
 
 ### Supabase as a Backend-as-a-Service
 
-All backend concerns — JWT authentication, PostgreSQL database operations, and cabin image file storage — are handled through Supabase. This eliminates a custom Node/Express server while still providing a fully relational database. Row Level Security (RLS) policies on the database ensure users can only access their own data, enforced at the database level rather than the application layer.
+All backend concerns — JWT authentication, PostgreSQL database operations, and cabin image file storage — are handled through Supabase. This eliminates a custom Node/Express server while still providing a fully relational database. Row Level Security (RLS) policies on the database ensure that only authenticated users can access the data, enforced at the database level rather than the application layer.
 
 ---
 
@@ -95,4 +95,4 @@ Route-based code splitting with `React.lazy` and `Suspense` splits the bundle in
 
 ### Dark Mode via CSS Custom Properties
 
-Theme switching is handled entirely through CSS custom properties on the `:root` element. Toggling the theme swaps a set of variable values — `--color-brand-50`, `--backdrop`, `--shadow-md`, etc. — and every styled component updates automatically. No JavaScript-driven style injection, no Context re-renders triggered by theme state.
+Theme switching is handled entirely through CSS custom properties on the `:root` element. Toggling the theme swaps a set of variable values — `--color-brand-50`, `--backdrop`, `--shadow-md`, etc. — and every styled component updates automatically. The preference is persisted in `localStorage` so it survives page refresh. No JavaScript-driven style injection, no Context re-renders triggered by theme state.
