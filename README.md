@@ -21,8 +21,8 @@ A full-stack hotel operations dashboard for managing bookings, cabins, check-ins
 
 No sign-up required. The demo is pre-loaded with sample data.
 
-> **Email:** `YOUR_DEMO_EMAIL`  
-> **Password:** `YOUR_DEMO_PASSWORD`
+> **Email:** `yugam@test.com`  
+> **Password:** `12345678`
 
 Hit **Login** and explore the full dashboard.
 
